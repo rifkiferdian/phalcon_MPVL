@@ -49,10 +49,16 @@ class Users extends \Phalcon\Mvc\Model
         $validator = new Validation();
 
         $validator->add(
-            'nama_depan',
+            [
+                "nama_depan",
+                "password",
+            ],
             new PresenceOf(
                 [
-                    'message' => 'The nama_depan is required',
+                    "message" => [
+                        "nama_depan"  => "The nama_depan is required",
+                        "password" => "The password is required",
+                    ],
                 ]
             )
         );
@@ -62,26 +68,6 @@ class Users extends \Phalcon\Mvc\Model
             new Min(
                 [
                     "min"     => 3,
-                    "message" => "We want more than just their initials",
-                    "included" => true
-                ]
-            )
-        );
-
-        $validator->add(
-            'password',
-            new PresenceOf(
-                [
-                    'message' => 'The password is required',
-                ]
-            )
-        );
-
-        $validator->add(
-            "nama_depan",
-            new Min(
-                [
-                    "min"     => 5,
                     "message" => "We want more than just their initials",
                     "included" => true
                 ]

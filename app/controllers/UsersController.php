@@ -24,10 +24,6 @@ class UsersController extends \Phalcon\Mvc\Controller
     }
 
     public function registerUserAction() { 
-        // echo "<pre>";
-        // print_r($_POST);
-        // echo "</pre>";
-
         $user = new Users();  
         $nama_depan    = $this->request->getPost("nama_depan");
         $nama_belakang    = $this->request->getPost("nama_belakang");
@@ -42,23 +38,17 @@ class UsersController extends \Phalcon\Mvc\Controller
 
         if (false === $user->save()) {
             $messages = $user->getMessages();
-            foreach ($messages as $message) {
-                echo 'Message: ', $message->getMessage();
-                echo '<br>';
-                echo 'Field: ', $message->getField();
-                echo '<br>';
-            }
-        }else{
-            echo "BERHASIL DISIMPAN";
-        }
-
-
-        // try {
-        //     $user->save();
-        // } catch (Exception $ex) {
-        //     echo $ex->getMessage();
-        // }
         
+            foreach ($messages as $message) {
+                $err_msg .= 'Message: '. $message->getMessage().'<br>';
+            }
+
+            $this->flashSession->warning($err_msg);
+            return $this->response->redirect('register');
+        }else{
+            $this->flashSession->success('Berhasil membuat akun!');
+            return $this->response->redirect('login');
+        }
     }
     
     public function loginAction() {  

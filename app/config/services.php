@@ -11,6 +11,8 @@ use Phalcon\Session\Adapter\Stream as SessionAdapter;
 use Phalcon\Session\Manager as SessionManager;
 use Phalcon\Url as UrlResolver;
 
+use Phalcon\Flash\Session;
+
 /**
  * Shared configuration service
  */
@@ -107,6 +109,38 @@ $di->set('flash', function () {
 
     return $flash;
 });
+
+
+$di->set(
+    'flashSession',
+    function () {
+        $flash = new Session();
+
+        $flash->setCssClasses(
+            [
+                'error'   => 'alert alert-danger alert-dismissible show fade',
+                'success' => 'alert alert-success alert-dismissible show fade',
+                'warning' => 'alert alert-warning alert-dismissible show fade',
+                'notice'  => 'alert alert-light alert-dismissible show fade'
+            ]
+        );
+        
+        $template = "<div class='%cssClass%'>
+                        <div class='alert-body'>
+                        <button class='close' data-dismiss='alert'>
+                            <span>×</span>
+                        </button>
+                            %message%
+                        </div>
+                    </div>";
+        $flash->setCustomTemplate($template);
+
+        $flash->setAutoescape(false);
+
+        return $flash;
+    }
+);
+
 
 /**
  * Start the session the first time some component request the session service

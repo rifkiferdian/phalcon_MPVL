@@ -5,6 +5,7 @@
         <img src="assets/img/VL.png" alt="logo" width="110" class="shadow-light rounded-circle mb-5 mt-2">
         <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">ViLab</span></h4>
         <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p>
+        <?php $this->flashSession->output() ?>
         <form method="POST" action="#" class="needs-validation" novalidate="">
           <div class="form-group">
             <label for="email">Email</label>
