@@ -266,10 +266,10 @@ a:3:{i:0;s:13339:"<div id="app">
         </div>
       </nav>
     ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:6:"
-    ";s:4:"file";s:70:"C:\xampp7.4.33\htdocs\MPVL1/app/views/\layouts/template_dashboard.volt";s:4:"line";i:269;}}i:1;s:318:"
+    ";s:4:"file";s:70:"C:\xampp7.4.33\htdocs\MPVL1/app/views/\layouts/template_dashboard.volt";s:4:"line";i:269;}}i:1;s:332:"
       <footer class="main-footer">
         <div class="footer-left">
-            Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+            Copyright &copy; VILAB <div class="bullet"></div> Created By <a href="https://github.com/rifkiferdian">Rifki Ahmad Perdian</a>
         </div>
         <div class="footer-right">
             

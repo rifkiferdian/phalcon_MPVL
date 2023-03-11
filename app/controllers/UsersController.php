@@ -25,13 +25,15 @@ class UsersController extends \Phalcon\Mvc\Controller
 
     public function registerUserAction() { 
         $user = new Users();  
+        $role_user = $this->request->getPost("role_user");
         $nama_depan    = $this->request->getPost("nama_depan");
         $nama_belakang    = $this->request->getPost("nama_belakang");
         $email    = $this->request->getPost("email");
         $password = $this->request->getPost("password");
         $user->nama_depan = $nama_depan;  
         $user->nama_belakang = $nama_belakang;  
-        $user->email = $email;  
+        $user->email = $email;
+        $user->role_user = $role_user;
 
         if (empty($password)) {
             $this->flashSession->warning('The password is required.');
@@ -79,10 +81,11 @@ class UsersController extends \Phalcon\Mvc\Controller
                     ->checkHash($password, $user->password);
                     
                 if (true === $check) {
-                    $this->session->set('uid', $user->id);  
-                    $this->session->set('nama_depan', $user->nama_depan);  
-                    $this->session->set('nama_belakang', $user->nama_belakang);  
-                    $this->session->set('email', $user->email);  
+                    $this->session->set('uid', $user->id);
+                    $this->session->set('nama_depan', $user->nama_depan);
+                    $this->session->set('nama_belakang', $user->nama_belakang);
+                    $this->session->set('email', $user->email);
+                    $this->session->set('role_user', $user->role_user);
                     $this->flashSession->success("You've been successfully logged in");
                     $this->response->redirect('dashboard');
                 }else{

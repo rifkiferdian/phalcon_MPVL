@@ -17,6 +17,12 @@ class Users extends \Phalcon\Mvc\Model
 
     /**
      *
+     * @var integer
+     */
+    public $role_user;
+
+    /**
+     *
      * @var string
      */
     public $nama_depan;
