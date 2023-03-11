@@ -89,13 +89,14 @@ class Users extends \Phalcon\Mvc\Model
             new UniquenessValidator(
                 [
                     "model"   => $this,
-                    "message" => ":field must be unique",
+                    "message" => ":field already exists !",
                 ]
             )
         );
 
         return $this->validate($validator);
     }
+
 
     /**
      * Initialize method for model.

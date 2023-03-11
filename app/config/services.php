@@ -12,6 +12,8 @@ use Phalcon\Session\Manager as SessionManager;
 use Phalcon\Url as UrlResolver;
 
 use Phalcon\Flash\Session;
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Security;
 
 /**
  * Shared configuration service
@@ -51,7 +53,8 @@ $di->setShared('view', function () {
 
             $volt->setOptions([
                 'path' => $config->application->cacheDir,
-                'separator' => '_'
+                'separator' => '_',
+                'always' => true  
             ]);
 
             return $volt;
@@ -124,7 +127,7 @@ $di->set(
                 'notice'  => 'alert alert-light alert-dismissible show fade'
             ]
         );
-        
+
         $template = "<div class='%cssClass%'>
                         <div class='alert-body'>
                         <button class='close' data-dismiss='alert'>
@@ -151,7 +154,25 @@ $di->setShared('session', function () {
         'savePath' => sys_get_temp_dir(),
     ]);
     $session->setAdapter($files);
+    ini_set('session.gc_maxlifetime', '3600');
+    session_set_cookie_params(3600);
     $session->start();
 
     return $session;
 });
+
+
+/**
+ * Start the session the first time some component request the session service
+ */
+$di->set(
+    'security',
+    function () {
+        $security = new Security();
+
+        $security->setWorkFactor(12);
+
+        return $security;
+    },
+    true
+);

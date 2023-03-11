@@ -13,5 +13,12 @@ class IndexController extends ControllerBase
         }
     }
 
+    public function checkIsLogin(Type $var = null)
+    {
+        if (empty($this->session->get('uid'))) {
+            $this->response->redirect('login');
+        }
+    }
+
 }
 

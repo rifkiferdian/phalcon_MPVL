@@ -32,6 +32,11 @@ class UsersController extends \Phalcon\Mvc\Controller
         $user->nama_depan = $nama_depan;  
         $user->nama_belakang = $nama_belakang;  
         $user->email = $email;  
+
+        if (empty($password)) {
+            $this->flashSession->warning('The password is required.');
+            return $this->response->redirect('register');
+        }
         
         // Store the hashed pasword 
         $user->password = $this->security->hash($password);
@@ -50,38 +55,52 @@ class UsersController extends \Phalcon\Mvc\Controller
             return $this->response->redirect('login');
         }
     }
-    
-    public function loginAction() {  
-        if ($this->request->isPost()) {  
-           $user = Users::findFirst(array( 
-              'login = :login: and password = :password:', 
-              'bind' => array( 
-                 'login' => $this->request->getPost("login"), 
-                 'password' => sha1($this->request->getPost("password")) 
-              ) 
-           ));  
-           if ($user === false) { 
-              $this->flash->error("Incorrect credentials"); 
-              return $this->dispatcher->forward(array( 
-                 'controller' => 'users', 
-                 'action' => 'index' 
-              )); 
-           }
-           $this->session->set('auth', $user->id);  
-           $this->flash->success("You've been successfully logged in"); 
+
+   
+    public function loginCheckAction() {  
+
+        if ($this->request->isPost()) {
+            $email = $this->request->getPost("email");
+            $password = $this->request->getPost("password");
+
+            $user = Users::findFirst(
+                [
+                    'conditions' => 'email = :email:',
+                    'bind'       => [
+                        'email' => $email,
+                    ],
+                ]
+            );
+
+            if ($user !== null) {
+                
+                $check = $this
+                    ->security
+                    ->checkHash($password, $user->password);
+                    
+                if (true === $check) {
+                    $this->session->set('uid', $user->id);  
+                    $this->session->set('nama_depan', $user->nama_depan);  
+                    $this->session->set('nama_belakang', $user->nama_belakang);  
+                    $this->session->set('email', $user->email);  
+                    $this->flashSession->success("You've been successfully logged in");
+                    $this->response->redirect('dashboard');
+                }else{
+                    $this->flashSession->error("Password Incorrect");
+                    $this->response->redirect('login'); 
+                }
+            }else{
+                $this->flashSession->error("Email not found !");
+                $this->response->redirect('login'); 
+            }
+
         }  
-        return $this->dispatcher->forward(array( 
-           'controller' => 'posts', 
-           'action' => 'index' 
-        )); 
+        
     }
 
     public function logoutAction() { 
-        $this->session->remove('auth'); 
-        return $this->dispatcher->forward(array( 
-           'controller' => 'posts', 
-           'action' => 'index' 
-        )); 
+        $this->session->destroy();
+        $this->response->redirect('login'); 
     } 
 
 }

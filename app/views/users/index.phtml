@@ -1,3 +1,4 @@
+<div class="container">
 <section class="section" style="margin-top: 70px;">
   <div class="d-flex flex-wrap align-items-stretch">
     <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
@@ -6,7 +7,7 @@
         <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">ViLab</span></h4>
         <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p>
         <?php $this->flashSession->output() ?>
-        <form method="POST" action="#" class="needs-validation" novalidate="">
+        <form method="POST" action="loginCheck" class="needs-validation" novalidate="">
           <div class="form-group">
             <label for="email">Email</label>
             <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
@@ -33,7 +34,7 @@
           </div> -->
 
           <div class="form-group text-right">
-            <a href="auth-forgot-password.html" class="float-left mt-3">
+            <a href="#" class="float-left mt-3">
               Forgot Password?
             </a>
             <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
@@ -69,3 +70,4 @@
     </div>
   </div>
 </section>
+</div>

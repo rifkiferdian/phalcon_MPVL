@@ -8,6 +8,11 @@ $router->add('/login', array(
     'action' => 'index', 
 ));
 
+$router->add('/logout', array( 
+    'controller' => 'users', 
+    'action' => 'logout', 
+));
+
 $router->add('/register', array( 
     'controller' => 'users', 
     'action' => 'register', 
@@ -16,6 +21,16 @@ $router->add('/register', array(
 $router->add('/registerUser', array( 
     'controller' => 'users', 
     'action' => 'registerUser', 
+));
+
+$router->add('/loginCheck', array( 
+    'controller' => 'users', 
+    'action' => 'loginCheck', 
+));
+
+$router->add('/dashboard', array( 
+    'controller' => 'dashboard', 
+    'action' => 'index', 
 ));
 
 
