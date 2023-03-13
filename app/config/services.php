@@ -154,8 +154,8 @@ $di->setShared('session', function () {
         'savePath' => sys_get_temp_dir(),
     ]);
     $session->setAdapter($files);
-    ini_set('session.gc_maxlifetime', '3600');
-    session_set_cookie_params(3600);
+    ini_set('session.gc_maxlifetime', '86400');
+    session_set_cookie_params(86400);
     $session->start();
 
     return $session;

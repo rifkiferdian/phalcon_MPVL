@@ -34,6 +34,19 @@ $router->add('/dashboard', array(
 ));
 
 
+$router->add('/classroom/addClass', array(
+    'controller' => 'classroom',
+    'action' => 'addClass',
+));
+
+$router->add('/classroom/classForum/{class_code}', array(
+    'controller' => 'classroom',
+    'action' => 'classForum',
+));
+
+
+
+
 $router->notFound(array(
     "controller" => "error",
     "action" => "index"

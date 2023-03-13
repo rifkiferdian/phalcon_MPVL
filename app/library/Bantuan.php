@@ -2,11 +2,6 @@
 
 class Bantuan {
 
-	public function asdasd($value='')
-	{
-		return 'asdasd';
-	}
-
 	public function dateBahasaIndo($date, $short_bln = '') {
 		
 		if (substr($date, 0, 10) == '0000-00-00') {

@@ -6,7 +6,7 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        if (empty($this->session->get('uid'))) {
+        if (empty($this->session->get('user_id'))) {
             $this->response->redirect('login');
         }else{
             $this->response->redirect('dashboard');
@@ -15,7 +15,7 @@ class IndexController extends ControllerBase
 
     public function checkIsLogin(Type $var = null)
     {
-        if (empty($this->session->get('uid'))) {
+        if (empty($this->session->get('user_id'))) {
             $this->response->redirect('login');
         }
     }

@@ -1,13 +1,17 @@
 <?php
 
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\Email as EmailValidator;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\StringLength\Min;
-use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
 
-class Users extends \Phalcon\Mvc\Model
+class Classroom extends \Phalcon\Mvc\Model
 {
+
+    /**
+     *
+     * @var integer
+     */
+    public $class_id;
 
     /**
      *
@@ -17,85 +21,49 @@ class Users extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var integer
+     * @var string
      */
-    public $role_user;
+    public $class_name;
 
     /**
      *
      * @var string
      */
-    public $first_name;
+    public $class_description;
 
     /**
      *
      * @var string
      */
-    public $last_name;
+    public $class_thumbnail_picture;
 
-    /**
-     *
-     * @var string
-     */
-    public $email;
-
-    /**
-     *
-     * @var string
-     */
-    public $password;
-
-    /**
-     * Validations and business logic
-     *
-     * @return boolean
-     */
     public function validation()
     {
         $validator = new Validation();
 
         $validator->add(
             [
-                "first_name",
-                "password",
+                "class_name",
+                "user_id",
+                "class_description",
             ],
             new PresenceOf(
                 [
                     "message" => [
-                        "first_name"  => "The first_name is required",
-                        "password" => "The password is required",
+                        "class_name"  => "The class_name is required",
+                        "class_description" => "The class_description is required",
                     ],
                 ]
             )
         );
 
         $validator->add(
-            "first_name",
+            "class_name",
             new Min(
                 [
                     "min"     => 3,
-                    "message" => "We want more than just their initials",
+                    "message" => "Nama Kelas harus lebih dari 3 huruf",
                     "included" => true
-                ]
-            )
-        );
-        
-        $validator->add(
-            'email',
-            new EmailValidator(
-                [
-                    'model'   => $this,
-                    'message' => 'Please enter a correct email address',
-                ]
-            )
-        );
-
-        $validator->add(
-            "email",
-            new UniquenessValidator(
-                [
-                    "model"   => $this,
-                    "message" => ":field already exists !",
                 ]
             )
         );
@@ -103,21 +71,20 @@ class Users extends \Phalcon\Mvc\Model
         return $this->validate($validator);
     }
 
-
     /**
      * Initialize method for model.
      */
     public function initialize()
     {
         $this->setSchema("mpvl");
-        $this->setSource("users");
+        $this->setSource("classroom");
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return Users[]|Users|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return Classroom[]|Classroom|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null): \Phalcon\Mvc\Model\ResultsetInterface
     {
@@ -128,7 +95,7 @@ class Users extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return Users|\Phalcon\Mvc\Model\ResultInterface|\Phalcon\Mvc\ModelInterface|null
+     * @return Classroom|\Phalcon\Mvc\Model\ResultInterface|\Phalcon\Mvc\ModelInterface|null
      */
     public static function findFirst($parameters = null): ?\Phalcon\Mvc\ModelInterface
     {

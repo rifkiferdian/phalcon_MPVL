@@ -26,12 +26,12 @@ class UsersController extends \Phalcon\Mvc\Controller
     public function registerUserAction() { 
         $user = new Users();  
         $role_user = $this->request->getPost("role_user");
-        $nama_depan    = $this->request->getPost("nama_depan");
-        $nama_belakang    = $this->request->getPost("nama_belakang");
+        $first_name    = $this->request->getPost("first_name");
+        $last_name    = $this->request->getPost("last_name");
         $email    = $this->request->getPost("email");
         $password = $this->request->getPost("password");
-        $user->nama_depan = $nama_depan;  
-        $user->nama_belakang = $nama_belakang;  
+        $user->first_name = $first_name;
+        $user->last_name = $last_name;
         $user->email = $email;
         $user->role_user = $role_user;
 
@@ -81,12 +81,11 @@ class UsersController extends \Phalcon\Mvc\Controller
                     ->checkHash($password, $user->password);
                     
                 if (true === $check) {
-                    $this->session->set('uid', $user->id);
-                    $this->session->set('nama_depan', $user->nama_depan);
-                    $this->session->set('nama_belakang', $user->nama_belakang);
+                    $this->session->set('user_id', $user->user_id);
+                    $this->session->set('first_name', $user->first_name);
+                    $this->session->set('last_name', $user->last_name);
                     $this->session->set('email', $user->email);
                     $this->session->set('role_user', $user->role_user);
-                    $this->flashSession->success("You've been successfully logged in");
                     $this->response->redirect('dashboard');
                 }else{
                     $this->flashSession->error("Password Incorrect");
