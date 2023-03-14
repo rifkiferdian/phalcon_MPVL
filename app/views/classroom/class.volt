@@ -55,14 +55,14 @@
 
           <div class="card">
             <div class="card-header">
-              <h4>Tugas </h4>
+              <h4>Info Kelas </h4>
             </div>
             <div class="card-body">
-              <p>Tidak ada tugas yang perlu segera diselesaikan</p>
+              <p>Belum ada info yang di bagikan.</p>
             </div>
             <div class="card-footer bg-white">
                 <div class="article-cta" style="text-align: right;">
-                  <a href="classroom/classForum/1c3961">Masuk Kelas <i class="fas fa-chevron-right"></i></a>
+                  <a href="classroom/classForum/1c3961">Semua Info <i class="fas fa-chevron-right"></i></a>
                 </div>
               </div>
           </div>
@@ -79,33 +79,33 @@
                 </a>
               </p>
               <hr>
-              <div class="collapse" id="collapseExample" style="">
-                          <div class="row">
-                            <div class="col-12">
-                              <div class="card">
-                                <div class="card-body">
-                                  <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Materi</label>
-                                    <div class="col-sm-12 col-md-7">
-                                      <input type="text" class="form-control">
-                                    </div>
-                                  </div>
-                                  <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi Materi</label>
-                                    <div class="col-sm-12 col-md-7">
-                                      <textarea class="summernote-simple"></textarea>
-                                    </div>
-                                  </div>
-                                  <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                                    <div class="col-sm-12 col-md-7">
-                                      <button class="btn btn-primary">Posting</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+              <div class="collapse" id="collapseExample">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Materi</label>
+                            <div class="col-sm-12 col-md-7">
+                              <input type="text" class="form-control">
                             </div>
                           </div>
+                          <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi Materi</label>
+                            <div class="col-sm-12 col-md-7">
+                              <textarea class="summernote-simple"></textarea>
+                            </div>
+                          </div>
+                          <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                            <div class="col-sm-12 col-md-7">
+                              <button class="btn btn-primary">Posting</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
