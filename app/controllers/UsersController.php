@@ -10,6 +10,7 @@ class UsersController extends \Phalcon\Mvc\Controller
 
     public function indexAction()
     {
+        $this->session->destroy();
         $this->assets->addCss('assets/css/custom.css');
     }
 

@@ -313,7 +313,7 @@
     <form action="classroom/addClass" method="POST">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title">Tambah Kelas</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -356,7 +356,7 @@
 
       <footer class="main-footer">
         <div class="footer-left">
-            Copyright &copy; VILAB <div class="bullet"></div> Created By <a href="https://github.com/rifkiferdian">Rifki Ahmad Perdian</a>
+            Copyright &copy; VILAB <div class="bullet"></div> Created By <a target="_blank" href="https://github.com/rifkiferdian">Rifki Ahmad Perdian</a>
         </div>
         <div class="footer-right">
             
