@@ -3,6 +3,11 @@
 $router = $di->getRouter(FALSE);
 
 // Define your routes here
+$router->add('/', array( 
+    'controller' => 'index', 
+    'action' => 'index', 
+));
+
 $router->add('/login', array( 
     'controller' => 'users', 
     'action' => 'index', 

@@ -8,9 +8,15 @@ use Phalcon\Security;
 class UsersController extends \Phalcon\Mvc\Controller
 {
 
+    public function onConstruct()
+    {
+        if (!empty($this->session->get('user_id'))) {
+            $this->response->redirect('dashboard');
+        }
+    }
+
     public function indexAction()
     {
-        $this->session->destroy();
         $this->assets->addCss('assets/css/custom.css');
     }
 

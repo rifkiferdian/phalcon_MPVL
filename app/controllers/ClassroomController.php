@@ -32,12 +32,12 @@ class ClassroomController extends \Phalcon\Mvc\Controller
         // );
 
         $this->assets->addCss('assets/modules/summernote/summernote-bs4.css');
-        $this->assets->addCss('assets/modules/codemirror/lib/codemirror.css');
-        $this->assets->addCss('assets/modules/codemirror/theme/duotone-dark.css');
+        // $this->assets->addCss('assets/modules/codemirror/lib/codemirror.css');
+        // $this->assets->addCss('assets/modules/codemirror/theme/duotone-dark.css');
 
         $this->assets->addJs('assets/modules/summernote/summernote-bs4.js');
-        $this->assets->addJs('assets/modules/codemirror/lib/codemirror.js');
-        $this->assets->addJs('assets/modules/codemirror/mode/javascript/javascript.js');
+        // $this->assets->addJs('assets/modules/codemirror/lib/codemirror.js');
+        // $this->assets->addJs('assets/modules/codemirror/mode/javascript/javascript.js');
 
         $this->view->pick('classroom/class');
     }
